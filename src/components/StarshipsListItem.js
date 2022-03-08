@@ -8,6 +8,11 @@ function StarshipsListItem(props) {
   console.log({ starship });
 
   useEffect(() => {
+    if (starship.pilots.length === 0) {
+      setFirstPilot('(no pilots)')
+      return
+    }
+
     fetch(starship.pilots[0])
       .then(response => response.json())
       .then(response => {
